@@ -44,7 +44,7 @@ class KalmanFilter(object):
         return
 
 
-    def prediction_predict(self, x_, P_):
+    def future_predict(self, x_, P_):
         # Update time state
         x = np.dot(self.A, x_) + np.dot(self.B, self.u)
         # Calculate error covariance
@@ -53,7 +53,7 @@ class KalmanFilter(object):
         return x, P
 
 
-    def prediciton_update(self, z, x_, P_):
+    def future_update(self, z, x_, P_):
         # S = H*P*H'+R
         S = np.dot(self.C, np.dot(P_, self.C.T)) + self.R
         

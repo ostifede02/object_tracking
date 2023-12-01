@@ -1,3 +1,13 @@
+'''
+    The aim of this project is to implement a Kalman filter for prediciting the trajectory
+    of an object moving on a conveyor belt.
+    
+    TO DO:
+        + make future predictions based on current prediction
+        + track the position of the object, even without measurements (object through tunnel)
+
+'''
+
 import cv2
 import numpy as np
 
@@ -18,8 +28,10 @@ def main():
 
     measured = []
     predicted = []
-    mp = np.zeros((2, 1), np.float32)   # measured position
-    tp = np.zeros((4, 1), np.float32)   # predicted position    
+    future = []
+    mp = np.zeros((2, 1))   # measured position
+    tp = np.zeros((4, 1))   # predicted position
+    fp = np.zeros((4, 1))   # future position
     
     while True:
         frame = od.read(resize=(0.6, 0.6))      # get frame from imported video
@@ -30,6 +42,15 @@ def main():
         
         kf.update(mp)                           # update the Kalman filter with new measurement
         tp = kf.predict()                       # predict next position
+
+
+        # # make a future prediction based on the current prediction
+        # P_future = np.copy(kf.P)
+        # measured_future = np.copy(tp)
+
+        # for i in range(4):
+        #     x_future, P_future = kf.future_update(measured_future)
+
 
         # plot states and frame
         measured.append(mp)
