@@ -13,19 +13,20 @@ std_meas = 1.2     # Standard deviation of measurement (m)
 A = np.array([[1, dt], [0, 1]])
 B = np.array([[(dt**2)/2], [dt]])
 C = np.array([[1,0]])
+
 Q = np.array([[(dt**4)/4, (dt**3)/2],
                [(dt**3)/2, dt**2]]) * std_acc**2
 R = std_meas**2
 P = np.eye(A.shape[0])
 x = np.array([[0],[0]])
-u = 0
+u = 2
 
 
 # Generate time array
 t = np.arange(0, 100, dt)
 
 # Define a model track (in this case, a linear function)
-real_track = 4 * t + 12
+real_track = 0.1 * t**2 + 12
 
 # Create a KalmanFilter object
 kf = KalmanFilter(A, B, C, Q, R, x, u, dt)
@@ -50,9 +51,9 @@ for x_real in real_track:
 # **** PLOT ****
 # Plot the results
 fig = plt.figure()
-fig.suptitle('Example of Kalman filter for tracking a moving object in 1-D', fontsize=16)
+fig.suptitle('Kalman filter for tracking a moving object in 1-D', fontsize=16)
 plt.plot(t, measurements, label='Measurements', color='b', linewidth=0.5)
-plt.plot(t, np.array(real_track), label='Real Track', color='y', linewidth=1.5)
+plt.plot(t, np.array(real_track), label='Real Track', color='g', linewidth=1.5)
 plt.plot(t, np.squeeze(predictions), label='Kalman Filter Prediction', color='r', linewidth=1.5)
 plt.xlabel('Time (s)', fontsize=14)
 plt.ylabel('Position (m)', fontsize=14)
