@@ -1,8 +1,11 @@
 import cv2
 import numpy as np
+import os
+
 
 # DROID_CAM_IP_ADDRESS = "http://10.248.24.172:4747/video/"
-vid = cv2.VideoCapture("test_video/test_1.mp4")
+video_path = os.path.join(os.path.dirname(__file__), '../sources/videos/test_car.mp4')
+vid = cv2.VideoCapture(video_path)
 dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)       # create the dictionary for markers type
 
 
@@ -27,15 +30,17 @@ kalman_fil.processNoiseCov = (
 def pose_estimation(frame, dictionary):
     corners, marker_ids, rejected = cv2.aruco.detectMarkers(frame, dictionary)
 
-    # Check if markers are detected
-    if marker_ids is not None:
-        # Calculate the center point of each marker
-        cx = int((corners[0][0][0][0] + corners[0][0][1][0] + corners[0][0][2][0] + corners[0][0][3][0]) / 4)
-        cy = int((corners[0][0][0][1] + corners[0][0][1][1] + corners[0][0][2][1] + corners[0][0][3][1]) / 4)
-        mp = np.array([[np.float32(cx)], [np.float32(cy)]])
-        return mp        
-    else:
+    if marker_ids is None:
         return None
+
+    # Calculate the center point of each marker
+    marker_corners = corners[0][0]
+    cx = int(np.mean(marker_corners[:, 0]))
+    cy = int(np.mean(marker_corners[:, 1]))
+    mp = np.array([[np.float32(cx)], [np.float32(cy)]])
+
+    return mp
+
     
 
 def pose_prediction(kf, mp):
@@ -55,6 +60,9 @@ def draw_canvas(frame, measured, predicted):
 
 
 is_first = True
+
+
+
 
 while True:
     ret, frame = vid.read()
