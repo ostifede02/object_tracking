@@ -16,6 +16,7 @@ $y = Cx$
 
 The states for this model are the $x$ and $y$ position of the object and it's velocity. We don't have any control on the system, since we will just observe it.
 
+```latex
 $x = \begin{bmatrix}
 x \\
 y \\
