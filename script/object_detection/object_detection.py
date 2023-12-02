@@ -27,20 +27,22 @@ class ObjectDetection():
     def draw_canvas(self, frame, measured, predicted, future):
         for measure_point, predict_point in zip(measured, predicted):
             # Draw a circle at the measured point
-            cv2.circle(frame, (int(measure_point[0][0]), int(measure_point[1][0])), 6, (0, 0, 255), -1)
+            cv2.circle(frame, (int(measure_point[0][0]), int(measure_point[1][0])), 4, (0, 0, 255), -1)
 
             # Draw a circle at the predicted point
             cv2.circle(frame, (int(predict_point[0][0]), int(predict_point[1][0])), 10, (255, 0, 0), 2)
 
         for future_point in future:
-            # Draw a circle at the measured point
-            cv2.circle(frame, (int(future_point[0][0]), int(future_point[1][0])), 8, (0, 255, 0), 2)
+            # Draw a circle at the future points
+            cv2.circle(frame, (int(future_point[0][0]), int(future_point[1][0])), 10, (255, 100, 50), 2)
 
         return frame 
     
 
     def read(self, resize = None):
         ret, frame = self.vid.read()
+        if frame is None:
+            return None
         
         if resize is not None:
             frame = cv2.resize(frame, (int(frame.shape[1]*resize[0]), int(frame.shape[0]*resize[1])))

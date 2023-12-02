@@ -3,7 +3,7 @@
     of an object moving on a conveyor belt.
     
     TO DO:
-        + make future predictions based on current prediction
+        + make future predictions based on current prediction.   DONE!
         + track the position of the object, even without measurements (object through tunnel)
 
 '''
@@ -23,6 +23,9 @@ def main():
     # ************  object detection  ************
     video_path = os.path.join(os.path.dirname(__file__), '../sources/videos/test_car.mp4')
     od = ObjectDetection(video_path)
+    
+    # IP_ADDRESS = "http://10.248.4.234:4747/video"
+    # od = ObjectDetection(IP_ADDRESS)
 
     # ************  Kalman filter  ************
     kf = KalmanFilter(conf.A, conf.B, conf.C, conf.Q, conf.R, conf.x, conf.u, conf.dt)
@@ -34,7 +37,10 @@ def main():
     tp = np.zeros((4, 1))   # predicted position
 
     while True:
+        # frame = od.read()      # get frame from imported video
         frame = od.read(resize=(0.6, 0.6))      # get frame from imported video
+        if frame is None:
+            break
 
         mp = od.pose_estimation(frame)          # measure position of marker
         if mp is None:
@@ -45,14 +51,13 @@ def main():
 
         # make a future prediction based on the current prediction
         P_future = np.copy(kf.P)
-        measured_future = np.copy(tp[0:2])
         x_future = np.copy(tp)
         future.clear()
+        
         for i in range(5):
-            x_future, P_future = kf.future_update(measured_future, x_future, P_future)
+            x_future, P_future = kf.future_update(x_future[0:2], x_future, P_future)
             x_future, P_future = kf.future_predict(x_future, P_future)
-            measured_future = x_future[0:2]
-            future.append(x_future)
+            future.append(x_future[0:2])
 
         # plot states and frame
         measured.append(mp)
@@ -62,11 +67,9 @@ def main():
         od.show(frame)
 
         # Check for keypress
-        key = cv2.waitKey(0) & 0xFF
+        key = cv2.waitKey(0)
         if key == ord('q'): 
             break
-        elif key == ord(' '):
-            continue
 
     od.vid.release()
     cv2.destroyAllWindows()
