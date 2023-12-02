@@ -36,7 +36,7 @@ We are interested in the position of the object, hence the output of the model a
 ## Kalman filter
 The Kalman filter is implemented with a KalmanFilter class. It has been written from skratch in order to have more control on the states variables, which resulted to be an issue using other libraries. 
 
-# tracking with aruco markers
+# Tracking with aruco markers
 In order to show how the Kalman filter works, two possible applications of it are depicted below. For this experiment the camera detect the position of an aruco marker and apply the Kalman filter to the measured position.
 
 #### legend
@@ -48,7 +48,7 @@ In order to show how the Kalman filter works, two possible applications of it ar
 
 ## trajectory prediction
 
-In the first frame the marker is detected, the predicted position corresponds to it.
+In the first frame the marker is detected. The predicted position corresponds to it.
 ![prediction1](/sources/images/prediction/prediction1.png)
 
 In the first frames, the prediction shows a transient behavior.
@@ -56,7 +56,7 @@ In the first frames, the prediction shows a transient behavior.
 
 ![prediction3](/sources/images/prediction/prediction3.png)
 
-After some measurements, the Kalman filter shows an accurate prediction of future position.
+After some measurements, the Kalman filter shows an accurate prediction of future positions.
 ![prediction4](/sources/images/prediction/prediction4.png)
 
 
@@ -64,7 +64,7 @@ After some measurements, the Kalman filter shows an accurate prediction of futur
 Let's assume that as the car reaches the tunnel, the Kalman filter has already overcome the initial transient phase.
 ![tunnel1](/sources/images/tunnel/tunnel_1.png)
 
-If the camera loose the the position of the marker, the measurement is replaced by the previous prediciton. That is why the algorithm is able to track the marker, even without detecting it.
+In case the camera loose the visibility of the marker, the measurement is replaced by the previous prediciton. That is how the algorithm is able to track the marker, even without detecting it.
 ![tunnel2](/sources/images/tunnel/tunnel_2.png)
 
 As the car gets out of the tunnel, the marker is detected again. As we can see, during the transition from predicted and measured position, the red dots slightly overlay. This is because, while the marker is not detected, the prediction gains some error and the car might slow down due to friction.
