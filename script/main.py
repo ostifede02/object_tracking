@@ -10,6 +10,7 @@
 
 import cv2
 import numpy as np
+import time
 
 import os
 
@@ -31,8 +32,7 @@ def main():
     future = []
     mp = np.zeros((2, 1))   # measured position
     tp = np.zeros((4, 1))   # predicted position
-    fp = np.zeros((4, 1))   # future position
-    
+
     while True:
         frame = od.read(resize=(0.6, 0.6))      # get frame from imported video
 
@@ -43,19 +43,21 @@ def main():
         kf.update(mp)                           # update the Kalman filter with new measurement
         tp = kf.predict()                       # predict next position
 
-
-        # # make a future prediction based on the current prediction
-        # P_future = np.copy(kf.P)
-        # measured_future = np.copy(tp)
-
-        # for i in range(4):
-        #     x_future, P_future = kf.future_update(measured_future)
-
+        # make a future prediction based on the current prediction
+        P_future = np.copy(kf.P)
+        measured_future = np.copy(tp[0:2])
+        x_future = np.copy(tp)
+        future.clear()
+        for i in range(5):
+            x_future, P_future = kf.future_update(measured_future, x_future, P_future)
+            x_future, P_future = kf.future_predict(x_future, P_future)
+            measured_future = x_future[0:2]
+            future.append(x_future)
 
         # plot states and frame
         measured.append(mp)
         predicted.append(tp)
-        frame = od.draw_canvas(frame, measured, predicted)
+        frame = od.draw_canvas(frame, measured, predicted, future)
         
         od.show(frame)
 
@@ -65,7 +67,6 @@ def main():
             break
         elif key == ord(' '):
             continue
-
 
     od.vid.release()
     cv2.destroyAllWindows()
