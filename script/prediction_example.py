@@ -37,7 +37,7 @@ def main():
         x_future = np.copy(tp)
         future.clear()
         
-        for i in range(20):
+        for i in range(4):
             x_future, P_future = kf.future_update(x_future[0:2], x_future, P_future)
             x_future, P_future = kf.future_predict(x_future, P_future)
             future.append(x_future[0:2])
