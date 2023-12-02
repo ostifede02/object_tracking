@@ -16,11 +16,18 @@ $y = Cx$
 
 The states for this model are the $x$ and $y$ position of the object and it's velocity. We don't have any control on the system, since we will just observe it.
 
-x = \begin{bmatrix} x \\\ y \\\ \dot{x} \\\ \dot{y} \end{bmatrix}
+$x
+= 
+\begin{bmatrix} 
+x \\ 
+y \\ 
+\dot{x} \\ 
+\dot{y} 
+\end{bmatrix}$
 
 $u = \begin{bmatrix}
-0 \\\
-0 \\\
+0 \\
+0 \\
 \end{bmatrix}$
 
 #### State Transition Matrix A
