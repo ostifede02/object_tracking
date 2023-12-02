@@ -34,3 +34,40 @@ We are interested in the position of the object, hence the output of the model a
 
 
 ## Kalman filter
+The Kalman filter is implemented with a KalmanFilter class. It has been written from skratch in order to have more control on the states variables, which resulted to be an issue using other libraries. 
+
+In order to show how the Kalman filter works, two examples are provided below.
+
+
+## tracking with aruco markers
+#### legend
+| Symbol         | Description                                                    |
+| -------------- | -------------------------------------------------------------- |
+| Red Dot        | Measured position                                             |
+| Green Circle   | Predicted position from measurement                           |
+| Blue Circle    | Recursive predicted position from previous predicted position |
+
+### trajectory prediction
+
+In the first frame the marker is detected, the predicted position corresponds to it.
+![prediction1](/sources/images/prediction/prediction1.png)
+
+In the first frames, the prediction shows a transient behavior.
+![prediction2](/sources/images/prediction/prediction2.png)
+
+![prediction3](/sources/images/prediction/prediction3.png)
+
+After some measurements, the Kalman filter shows an accurate prediction of future position.
+![prediction4](/sources/images/prediction/prediction4.png)
+
+
+### tracking without signal
+Let's assume that as the car reaches the tunnel, the Kalman filter has already overcome the initial transient phase.
+![tunnel1](/sources/images/tunnel/tunnel_1.png)
+
+If the camera loose the the position of the marker, the measurement is replaced by the previous prediciton. That is why the algorithm is able to track the marker, even without detecting it.
+![tunnel2](/sources/images/tunnel/tunnel_2.png)
+
+As the car get's out of the tunnel.
+![tunnel3](/sources/images/tunnel/tunnel_3.png)
+![tunnel4](/sources/images/tunnel/tunnel_4.png)
