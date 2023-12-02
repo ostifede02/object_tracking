@@ -29,13 +29,13 @@ def main():
         
         # add noise to video
         out_frame = np.copy(frame)
-        col_start, col_end = 300, 500
-        out_frame[0:height, col_start:col_end] = [255, 75, 50]
+        col_start, col_end = 300, 470
+        out_frame[0:height, col_start:col_end] = [100, 20, 20]
 
         # Add text to the frame
         font = cv2.FONT_HERSHEY_SIMPLEX
         text = "It's a tunnel."
-        textsize = 0.9
+        textsize = 0.8
 
         # Calculate the position to center the text
         textX = col_start + 5
@@ -55,7 +55,7 @@ def main():
             break
 
 
-    out.release()
+    # out.release()
     cap.release()
     cv2.destroyAllWindows()
 

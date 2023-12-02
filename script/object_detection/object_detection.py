@@ -30,7 +30,7 @@ class ObjectDetection():
             cv2.circle(frame, (int(measure_point[0][0]), int(measure_point[1][0])), 4, (0, 0, 255), -1)
 
             # Draw a circle at the predicted point
-            cv2.circle(frame, (int(predict_point[0][0]), int(predict_point[1][0])), 8, (255, 0, 0), 2)
+            cv2.circle(frame, (int(predict_point[0][0]), int(predict_point[1][0])), 8, (50, 220, 50), 2)
 
         for future_point in future:
             # Draw a circle at the future points
@@ -39,19 +39,14 @@ class ObjectDetection():
         return frame 
     
 
-    def read(self, resize = None):
+    def read(self):
         ret, frame = self.vid.read()
-        if frame is None:
+        if not ret:
             return None
-        
-        if resize is not None:
-            frame = cv2.resize(frame, (int(frame.shape[1]*resize[0]), int(frame.shape[0]*resize[1])))
-            frame = frame[0:760, 130:280]
 
         return frame
     
 
     def show(self, frame):
-        frame = cv2.transpose(frame)
         cv2.imshow("frame", frame)
         
