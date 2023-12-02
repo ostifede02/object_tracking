@@ -64,11 +64,11 @@ After some measurements, the Kalman filter shows an accurate prediction of futur
 Let's assume that as the car reaches the tunnel, the Kalman filter has already overcome the initial transient phase.
 ![tunnel1](/sources/images/tunnel/tunnel_1.png)
 
-In case the camera loose the visibility of the marker, the measurement is replaced by the previous prediciton. That is how the algorithm is able to track the marker, even without detecting it.
+In case the camera looses the visibility of the marker, the measurement is replaced by the previous prediciton. That is how the algorithm is able to track the marker, even though not detecting it.
 ![tunnel2](/sources/images/tunnel/tunnel_2.png)
 
 As the car gets out of the tunnel, the marker is detected again. As we can see, during the transition from predicted and measured position, the red dots slightly overlay. This is because, while the marker is not detected, the prediction gains some error and the car might slow down due to friction.
 ![tunnel3](/sources/images/tunnel/tunnel_3.png)
 
-After few frames, the kalman filter works well as before.
+After few frames, the kalman filter works as well as before.
 ![tunnel4](/sources/images/tunnel/tunnel_4.png)
