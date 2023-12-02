@@ -27,7 +27,7 @@ $u = \begin{bmatrix}
 0 \\
 0 \\
 \end{bmatrix}$
-
+```
 #### State Transition Matrix A
 $A = \begin{bmatrix}
 1 & 0 & \text{dt} & 0 \\
