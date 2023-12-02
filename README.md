@@ -13,17 +13,16 @@ $\dot{x} = Ax + Bu$
 
 $y = Cx$
 
+\vec{v} = \begin{bmatrix} X \\\ Y \end{bmatrix}
 
 The states for this model are the $x$ and $y$ position of the object and it's velocity. We don't have any control on the system, since we will just observe it.
 
-<!-- $x = \begin{bmatrix}
+$x = \begin{bmatrix}
 x \\ 
 y \\ 
 \dot{x} \\ 
 \dot{y} 
-\end{bmatrix}$ -->
-![Matrix](https://render.githubusercontent.com/render/math?math=%24x%20%3D%20%5Cbegin%7Bbmatrix%7D%0Ax%20%5C%5C%0Ay%20%5C%5C%0A%5Cdot%7Bx%7D%20%5C%5C%0A%5Cdot%7By%7D%0A%5Cend%7Bbmatrix%7D%24)
-
+\end{bmatrix}$ 
 
 $u = \begin{bmatrix}
 0 \\
