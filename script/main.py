@@ -21,7 +21,7 @@ import configuration as conf
 
 def main():
     # ************  object detection  ************
-    video_path = os.path.join(os.path.dirname(__file__), '../sources/videos/test_car.mp4')
+    video_path = os.path.join(os.path.dirname(__file__), '../sources/videos/test_car_.mp4')
     od = ObjectDetection(video_path)
     
     # IP_ADDRESS = "http://10.248.4.234:4747/video"
@@ -54,7 +54,7 @@ def main():
         x_future = np.copy(tp)
         future.clear()
         
-        for i in range(5):
+        for i in range(20):
             x_future, P_future = kf.future_update(x_future[0:2], x_future, P_future)
             x_future, P_future = kf.future_predict(x_future, P_future)
             future.append(x_future[0:2])

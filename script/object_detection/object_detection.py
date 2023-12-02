@@ -30,11 +30,11 @@ class ObjectDetection():
             cv2.circle(frame, (int(measure_point[0][0]), int(measure_point[1][0])), 4, (0, 0, 255), -1)
 
             # Draw a circle at the predicted point
-            cv2.circle(frame, (int(predict_point[0][0]), int(predict_point[1][0])), 10, (255, 0, 0), 2)
+            cv2.circle(frame, (int(predict_point[0][0]), int(predict_point[1][0])), 8, (255, 0, 0), 2)
 
         for future_point in future:
             # Draw a circle at the future points
-            cv2.circle(frame, (int(future_point[0][0]), int(future_point[1][0])), 10, (255, 100, 50), 2)
+            cv2.circle(frame, (int(future_point[0][0]), int(future_point[1][0])), 8, (255, 100, 50), 2)
 
         return frame 
     
