@@ -13,7 +13,7 @@ $\dot{x} = Ax + Bu$
 
 $y = Cx$
 
-\vec{v} = \begin{bmatrix} X \\\ Y \end{bmatrix}
+$v = \begin{bmatrix} X \\\ Y \end{bmatrix}$
 
 The states for this model are the $x$ and $y$ position of the object and it's velocity. We don't have any control on the system, since we will just observe it.
 
