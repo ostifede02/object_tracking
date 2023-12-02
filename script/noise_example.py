@@ -1,18 +1,5 @@
-'''
-    The aim of this project is to implement a Kalman filter for prediciting the trajectory
-    of an object moving on a conveyor belt.
-    
-    TO DO:
-        + make future predictions based on current prediction.   DONE!
-        + track the position of the object, even without measurements (object through tunnel)
-
-'''
-
 import cv2
 import numpy as np
-import time
-
-import os
 
 from script.object_detection.object_detection import ObjectDetection
 from script.kalman_filter.kalman_filter import KalmanFilter
