@@ -77,4 +77,5 @@ As the car gets out of the tunnel, the marker is detected again. As we can see, 
 ![tunnel3](/sources/images/tunnel/tunnel_3.png)
 
 After few frames, the kalman filter works as well as before.
+
 ![tunnel4](/sources/images/tunnel/tunnel_4.png)
