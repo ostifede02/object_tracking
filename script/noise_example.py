@@ -4,7 +4,7 @@ import numpy as np
 from script.object_detection.object_detection import ObjectDetection
 from script.kalman_filter.kalman_filter import KalmanFilter
 import script.configuration as conf
-
+ 
 def main():
     # ************  object detection  ************
     video_path = 'sources/videos/test_car_noise.mp4'
