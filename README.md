@@ -46,7 +46,7 @@ In order to show how the Kalman filter works, two possible applications of it ar
 | Green Circle   | Predicted position from measurement                           |
 | Blue Circle    | Recursive predicted position from previous predicted position |
 
-## trajectory prediction
+## 1. trajectory prediction
 
 Initially the marker is detected. The predicted position corresponds to the measured position.
 
@@ -63,7 +63,7 @@ After some measurements, the Kalman filter shows an accurate prediction of futur
 ![prediction4](/sources/images/prediction/prediction4.png)
 
 
-## tracking without signal
+## 2. tracking without signal
 Let's assume that as the car reaches the tunnel, the Kalman filter has already overcome the initial transient phase.
 
 ![tunnel1](/sources/images/tunnel/tunnel_1.png)
