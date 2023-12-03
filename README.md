@@ -48,7 +48,7 @@ In order to show how the Kalman filter works, two possible applications of it ar
 
 ## trajectory prediction
 
-In the first frame the marker is detected. The predicted position corresponds to it.
+Initially the marker is detected. The predicted position corresponds to the measured position.
 
 ![prediction1](/sources/images/prediction/prediction1.png)
 
