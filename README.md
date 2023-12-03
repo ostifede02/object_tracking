@@ -37,7 +37,7 @@ We are interested in the position of the object, hence the output of the model a
 The Kalman filter is implemented with a KalmanFilter class. It has been written from skratch in order to have more control on the states variables, which resulted to be an issue using other libraries. 
 
 # Tracking with aruco markers
-In order to show how the Kalman filter works, two possible applications of it are depicted below. For this experiment the camera detect the position of an aruco marker and apply the Kalman filter to the measured position.
+In order to show how the Kalman filter works, two possible applications of it are depicted below. For this experiment the camera detects the position of an aruco marker and apply the Kalman filter to the measured position.
 
 #### legend
 | Symbol         | Description                                                    |
