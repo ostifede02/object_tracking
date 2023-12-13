@@ -13,7 +13,7 @@ $\dot{x} = Ax + Bu$
 
 $y = Cx$
 
-The states for this model are the $x$ and $y$ position of the object and it's velocity. We don't have any control on the system, since we will just observe it.
+The states for this model are the $x$ and $y$ position and velocity of the object. Moreover, we have any control on the system, since we are just measuring it's position. Thereby the control vector $u$ is null.
 
 ![x,u](/sources/images/matrices/x_u.png)
 
@@ -94,6 +94,3 @@ As the car gets out of the tunnel, the marker is detected again. As we can see, 
 After few frames, the kalman filter works as well as before.
 
 ![tunnel4](/sources/images/tunnel/tunnel_4.png)
-
-
-## sources
