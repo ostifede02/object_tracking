@@ -7,6 +7,8 @@ This project will finally be implemented in my thesis project: [pick and place d
 ## state space model
 The state space model describes the kinematics of a moving object on a conveyor belt.
 
+![diagram](/sources/images/other/setup_diagram.png)
+
 The state space equations are given by:
 
 $\dot{x} = Ax + Bu$
