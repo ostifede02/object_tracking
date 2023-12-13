@@ -1,7 +1,7 @@
-# Object tracking using Kalman filter
-The goal of this project is to learn and implement a Kalman filter for object tracking. It aims to develop a model to track an object and predict it's future position.
+# Object tracking using Kalman filter and aruco markers
+This project aims is to learn and implement a Kalman filter for object tracking. The goal is to develop a model to track an object and predict it's future position and velocity.
 
-This project will finally be implemented in my thesis project: [pick and place delta robot](https://github.com/ostifede02/2dr).
+This project will finally be implemented in my thesis project: [pick and place delta robot](https://github.com/ostifede02/2dr_ws).
 
 
 ## state space model
@@ -27,11 +27,12 @@ $\dot{x_k} = \dot{x_{k-1}} + \ddot{x_{k-1}}Δt$
 
 $\dot{y_k} = \dot{y_{k-1}} + \ddot{y_{k-1}}Δt$
 
-Rearranging these equations in a matrix form, we get the following $A$ and $B$ matrices.
-
-In addition, the term $Δt$, is the time between each frame and can be defined as the reciprocal of the acquisition rate of the camera ($fps$):
+The term $Δt$, is the time between each frame and can be defined as the reciprocal of the acquisition rate of the camera ($fps$):
 
 $Δt = 1/fps$
+
+Rearranging these equations in a matrix form, we get the following $A$ and $B$ matrices.
+
 
 #### State Transition Matrix A
 ![A](/sources/images/matrices/A.png)
@@ -52,9 +53,8 @@ We are interested in the position of the object, hence the output of the model a
 The Kalman filter is implemented with a KalmanFilter class. It has been written from skratch in order to have more control on the states variables, which resulted to be an issue using other libraries. 
 
 # Tracking with aruco markers
-In order to show how the Kalman filter works, two possible applications of it are depicted below. For this experiment the camera detects the position of an aruco marker and apply the Kalman filter to the measured position.
+In order to show how the Kalman filter works, two possible applications of it are depicted below. For this experiment the camera detects the position of an aruco marker (using openCV) and apply the Kalman filter to the measured position.
 
-#### legend
 | Symbol         | Description                                                    |
 | -------------- | -------------------------------------------------------------- |
 | Red Dot        | Measured position                                             |
@@ -94,3 +94,6 @@ As the car gets out of the tunnel, the marker is detected again. As we can see, 
 After few frames, the kalman filter works as well as before.
 
 ![tunnel4](/sources/images/tunnel/tunnel_4.png)
+
+
+## sources
