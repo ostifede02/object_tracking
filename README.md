@@ -13,10 +13,25 @@ $\dot{x} = Ax + Bu$
 
 $y = Cx$
 
-
 The states for this model are the $x$ and $y$ position of the object and it's velocity. We don't have any control on the system, since we will just observe it.
 
 ![x,u](/sources/images/matrices/x_u.png)
+
+The equations of motion along the $x$ and $y$ coordinates are given by:
+
+$x_k = x_{k-1} + \dot{x_{k-1}} Δt + 1/2\ddot{x_{k-1}} Δt^2 $
+
+$y_k = y_{k-1} + \dot{y_{k-1}} Δt + 1/2\ddot{y_{k-1}} Δt^2 $
+
+$\dot{x_k} = \dot{x_{k-1}} + \ddot{x_{k-1}}Δt$
+
+$\dot{y_k} = \dot{y_{k-1}} + \ddot{y_{k-1}}Δt$
+
+Rearranging these equations in a matrix form, we get the following $A$ and $B$ matrices.
+
+In addition, the term $Δt$, is the time between each frame and can be defined as the reciprocal of the acquisition rate of the camera ($fps$):
+
+$Δt = 1/fps$
 
 #### State Transition Matrix A
 ![A](/sources/images/matrices/A.png)
