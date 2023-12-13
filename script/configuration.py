@@ -1,11 +1,12 @@
 import numpy as np
 
-# Define sampling time
-dt = 0.1
+
+fps = 10        # frames per second
+dt = 1/fps      # sampling time
 
 
 # Define the State Transition Matrix A
-A = np.matrix([  [1, 0, dt, 0    ],
+A = np.matrix([ [1, 0, dt, 0    ],
                 [0, 1, 0,  dt   ],
                 [0, 0, 1,  0    ],
                 [0, 0, 0,  1    ]])

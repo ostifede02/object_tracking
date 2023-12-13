@@ -4,7 +4,6 @@ import numpy as np
 import os
 
 
-
 def main():
     # Open the video file
     input_video_path = os.path.join(os.path.dirname(__file__), '../sources/videos/test_car.mp4')

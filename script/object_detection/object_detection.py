@@ -9,7 +9,7 @@ class ObjectDetection():
         return
 
 
-    def pose_estimation(self, frame):
+    def pose_estimation_marker(self, frame):
         corners, marker_ids, rejected = cv2.aruco.detectMarkers(frame, self.dictionary)
 
         if marker_ids is None:

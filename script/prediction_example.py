@@ -25,7 +25,7 @@ def main():
             break
         
         frame = cv2.transpose(frame)
-        mp = od.pose_estimation(frame)          # measure position of marker
+        mp = od.pose_estimation_marker(frame)          # measure position of marker
         if mp is None:
             continue                            # if not detected, go to next frame
         
