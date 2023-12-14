@@ -15,7 +15,7 @@ $\dot{x} = Ax + Bu$
 
 $y = Cx$
 
-The states for this model are the $x$ and $y$ position and velocity of the object. Moreover, we have any control on the system, since we are just measuring it's position. Thereby the control vector $u$ is null.
+The states for this model are the $x$ and $y$ position and velocity of the object. Since we are just measuring it's position, we don't have any control on the system, thereby the control vector $u$ is null.
 
 ![x,u](/sources/images/matrices/x_u.png)
 
