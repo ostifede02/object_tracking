@@ -1,5 +1,5 @@
 # Object tracking using aruco markers and Kalman filter
-This project aims is to learn and implement a Kalman filter for object tracking. The goal is to develop a model to track an object and predict it's future position and velocity.
+The goal of this project is to learn and implement a Kalman filter for object tracking. It aims to develop a model to track an object and predict it's future position and velocity.
 
 This project will finally be implemented in my thesis project: [pick and place delta robot](https://github.com/ostifede02/2dr_ws).
 
